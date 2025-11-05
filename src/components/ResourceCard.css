@@ -1,0 +1,48 @@
+.resource-card {
+  background-color: white;
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  padding: 2rem;
+  text-decoration: none;
+  color: var(--text-color);
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--card-shadow);
+  transition: var(--transition);
+  cursor: pointer;
+}
+
+.resource-card:hover {
+  box-shadow: var(--card-hover-shadow);
+  border-color: var(--primary-color);
+}
+
+.resource-card h3 {
+  font-size: 1.1rem;
+  font-weight: 600;
+  line-height: 1.4;
+  flex: 1;
+  color: var(--secondary-color);
+}
+
+.resource-card .arrow {
+  font-size: 1.5rem;
+  color: var(--primary-color);
+  margin-left: 1rem;
+  transition: var(--transition);
+}
+
+.resource-card:hover .arrow {
+  transform: translateX(5px);
+}
+
+@media (max-width: 480px) {
+  .resource-card {
+    padding: 1.5rem;
+  }
+
+  .resource-card h3 {
+    font-size: 1rem;
+  }
+}
