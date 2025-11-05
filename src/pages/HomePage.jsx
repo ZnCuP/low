@@ -1,6 +1,8 @@
 import { motion } from 'framer-motion'
 import { useState } from 'react'
 import { Link } from 'react-router-dom'
+import { useLanguage } from '../contexts/LanguageContext'
+import { t } from '../i18n/translations'
 import PageHeader from '../components/PageHeader'
 import ResourceCard from '../components/ResourceCard'
 import ContentCard from '../components/ContentCard'
@@ -30,11 +32,11 @@ const resourcesData = [
 ]
 
 const tabs = [
-  { id: 'resources', label: 'Resources' },
-  { id: 'insights', label: 'Insights' },
-  { id: 'news', label: 'News' },
-  { id: 'events', label: 'Events' },
-  { id: 'blogs', label: 'Blogs' }
+  { id: 'resources', label: { en: 'Resources', zh: '资源' } },
+  { id: 'insights', label: { en: 'Insights', zh: '洞察' } },
+  { id: 'news', label: { en: 'News', zh: '新闻' } },
+  { id: 'events', label: { en: 'Events', zh: '活动' } },
+  { id: 'blogs', label: { en: 'Blogs', zh: '博客' } }
 ]
 
 const insightsData = [
@@ -47,6 +49,7 @@ const insightsData = [
 ]
 
 function HomePage() {
+  const { language } = useLanguage()
   const [activeTab, setActiveTab] = useState('resources')
 
   return (
@@ -57,10 +60,10 @@ function HomePage() {
       transition={{ duration: 0.3 }}
     >
       <PageHeader 
-        title="Resources"
+        title={t('home.title', language)}
         subtitle="Keep up with the latest legal and industry insights, news, and events from MoFo"
         showButton={true}
-        buttonText="SIGN UP"
+        buttonText={t('menu.signup', language)}
       />
 
       {/* Tab Navigation */}
@@ -73,7 +76,7 @@ function HomePage() {
                 className={`tab-btn ${activeTab === tab.id ? 'active' : ''}`}
                 onClick={() => setActiveTab(tab.id)}
               >
-                {tab.label}
+                {tab.label[language]}
               </button>
             ))}
           </div>

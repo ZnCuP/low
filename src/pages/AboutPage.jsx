@@ -1,23 +1,24 @@
 import React from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
+import { t } from '../i18n/translations'
 import PageHeader from '../components/PageHeader'
 
 function AboutPage() {
+  const { language } = useLanguage()
+  
   return (
     <div className="page">
       <PageHeader 
-        title="About Morrison Foerster" 
-        description="Learn about our history, values, and commitment to excellence"
+        title={t('about.title', language)}
+        description={t('about.description', language)}
       />
       
       <div className="content-wrapper">
         <div className="container">
           <div className="about-content">
-            <h2>About Our Firm</h2>
+            <h2>{t('about.heading', language)}</h2>
             <p>
-              Morrison Foerster is a global law firm recognized for exceptional client service, 
-              legal innovation, and deep industry expertise. With lawyers across the Americas, 
-              Asia, and Europe, we serve clients ranging from Fortune 100 companies to emerging 
-              startups.
+              {t('about.intro', language)}
             </p>
             
             <div className="about-sections" style={{ marginTop: '40px' }}>
@@ -27,11 +28,11 @@ function AboutPage() {
                 background: '#f8f8f8',
                 borderRadius: '8px'
               }}>
-                <h3 style={{ color: '#c8102e', marginBottom: '12px' }}>Our History</h3>
+                <h3 style={{ color: '#c8102e', marginBottom: '12px' }}>
+                  {t('about.history', language)}
+                </h3>
                 <p>
-                  Founded in San Francisco, Morrison Foerster has grown to become one of the 
-                  world's premier law firms, known for tackling complex legal challenges with 
-                  creativity and precision.
+                  {t('about.historyText', language)}
                 </p>
               </div>
               
@@ -41,11 +42,11 @@ function AboutPage() {
                 background: '#f8f8f8',
                 borderRadius: '8px'
               }}>
-                <h3 style={{ color: '#c8102e', marginBottom: '12px' }}>Our Values</h3>
+                <h3 style={{ color: '#c8102e', marginBottom: '12px' }}>
+                  {t('about.values', language)}
+                </h3>
                 <p>
-                  We are committed to diversity, inclusion, and social responsibility. 
-                  Our values guide everything we do, from how we serve clients to how we 
-                  support our communities.
+                  {t('about.valuesText', language)}
                 </p>
               </div>
               
@@ -54,11 +55,11 @@ function AboutPage() {
                 background: '#f8f8f8',
                 borderRadius: '8px'
               }}>
-                <h3 style={{ color: '#c8102e', marginBottom: '12px' }}>Global Reach</h3>
+                <h3 style={{ color: '#c8102e', marginBottom: '12px' }}>
+                  {t('about.globalReach', language)}
+                </h3>
                 <p>
-                  With offices in major business centers worldwide, we provide seamless 
-                  service across borders and time zones, bringing local knowledge and 
-                  global perspective to every matter.
+                  {t('about.globalReachText', language)}
                 </p>
               </div>
             </div>

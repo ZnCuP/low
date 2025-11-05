@@ -76,6 +76,18 @@ index-old.html
 # yarn.lock
 # pnpm-lock.yaml
 
+# TypeScript
+*.tsbuildinfo
+
+# Next.js (if used in future)
+.next/
+next-env.d.ts
+
+# Misc
+*.pem
+.vercel
+.turbo
+
 # Vite
 .vite/
 vite.config.js.timestamp-*

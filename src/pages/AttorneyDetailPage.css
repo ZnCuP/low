@@ -1,0 +1,407 @@
+.attorney-detail-page {
+  min-height: 100vh;
+  background: #ffffff;
+}
+
+/* Hero Section */
+.attorney-hero {
+  position: relative;
+  height: 500px;
+  overflow: hidden;
+}
+
+.hero-image {
+  width: 100%;
+  height: 100%;
+  position: relative;
+}
+
+.hero-image img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.hero-placeholder {
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, #003057 0%, #004080 100%);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  font-size: 120px;
+  font-weight: 300;
+  font-family: 'Georgia', serif;
+}
+
+.hero-overlay {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.3) 70%, transparent 100%);
+  padding: 60px 0 40px;
+}
+
+.hero-content h1 {
+  font-size: 56px;
+  font-weight: 300;
+  color: white;
+  margin: 0 0 12px 0;
+  font-family: 'Georgia', serif;
+}
+
+.attorney-meta {
+  font-size: 18px;
+  color: rgba(255, 255, 255, 0.9);
+  margin: 0 0 24px 0;
+  font-weight: 400;
+}
+
+.contact-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 20px;
+}
+
+.action-btn {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  background: rgba(255, 255, 255, 0.15);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  color: white;
+  font-size: 13px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s;
+  backdrop-filter: blur(10px);
+}
+
+.action-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  border-color: rgba(255, 255, 255, 0.5);
+}
+
+.action-btn svg {
+  stroke: white;
+}
+
+.contact-info {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+
+.contact-link {
+  color: white;
+  font-size: 16px;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.contact-link:hover {
+  opacity: 0.8;
+  text-decoration: underline;
+}
+
+.separator {
+  color: rgba(255, 255, 255, 0.5);
+}
+
+/* Navigation Tabs */
+.detail-tabs {
+  background: white;
+  border-bottom: 2px solid #e5e5e5;
+  position: sticky;
+  top: 70px;
+  z-index: 100;
+}
+
+.tabs-nav {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+}
+
+.tab-link {
+  padding: 20px 32px;
+  background: none;
+  border: none;
+  border-bottom: 3px solid transparent;
+  font-size: 14px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  color: #666;
+  cursor: pointer;
+  transition: all 0.2s;
+  white-space: nowrap;
+  text-transform: uppercase;
+}
+
+.tab-link:hover {
+  color: #000;
+  background: #f8f8f8;
+}
+
+.tab-link.active {
+  color: #003057;
+  border-bottom-color: #003057;
+  background: white;
+}
+
+/* Content */
+.detail-content {
+  padding: 60px 0;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+/* Overview Section */
+.overview-section {
+  max-width: 900px;
+}
+
+.attorney-quote {
+  font-size: 24px;
+  font-style: italic;
+  color: #003057;
+  margin: 0 0 40px 0;
+  padding: 0 0 40px 0;
+  border-bottom: 1px solid #e5e5e5;
+  line-height: 1.6;
+  font-family: 'Georgia', serif;
+  font-weight: 400;
+}
+
+.biography {
+  margin-bottom: 48px;
+}
+
+.biography p {
+  font-size: 16px;
+  line-height: 1.8;
+  color: #333;
+  margin-bottom: 20px;
+  white-space: pre-line;
+}
+
+.show-more-btn {
+  background: none;
+  border: 2px solid #000;
+  color: #000;
+  padding: 12px 32px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  margin-top: 16px;
+}
+
+.show-more-btn:hover {
+  background: #000;
+  color: white;
+}
+
+.info-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+  gap: 48px;
+  margin-top: 48px;
+  padding-top: 48px;
+  border-top: 1px solid #e5e5e5;
+}
+
+.info-section h3 {
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #003057;
+  margin: 0 0 20px 0;
+  text-transform: uppercase;
+}
+
+.info-section ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.info-section li {
+  margin-bottom: 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #333;
+}
+
+.info-section a {
+  color: #003057;
+  text-decoration: none;
+  transition: opacity 0.2s;
+}
+
+.info-section a:hover {
+  opacity: 0.7;
+  text-decoration: underline;
+}
+
+/* Content Sections */
+.insights-section,
+.news-section,
+.events-section,
+.rankings-section {
+  max-width: 900px;
+}
+
+.insights-section h2,
+.news-section h2,
+.events-section h2,
+.rankings-section h2 {
+  font-size: 32px;
+  font-weight: 300;
+  color: #000;
+  margin: 0 0 40px 0;
+  font-family: 'Georgia', serif;
+}
+
+.content-list {
+  display: flex;
+  flex-direction: column;
+  gap: 32px;
+  margin-bottom: 40px;
+}
+
+.content-item {
+  padding-bottom: 32px;
+  border-bottom: 1px solid #e5e5e5;
+}
+
+.content-badge {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 1px;
+  color: #003057;
+  background: #e8f1f7;
+  padding: 6px 12px;
+  margin-bottom: 12px;
+  text-transform: uppercase;
+}
+
+.content-item h3 {
+  font-size: 20px;
+  font-weight: 400;
+  color: #000;
+  margin: 0 0 8px 0;
+  line-height: 1.4;
+  transition: color 0.2s;
+  cursor: pointer;
+}
+
+.content-item h3:hover {
+  color: #003057;
+}
+
+.content-date {
+  font-size: 14px;
+  color: #999;
+  margin: 0;
+}
+
+.show-all-btn {
+  background: none;
+  border: 2px solid #000;
+  color: #000;
+  padding: 14px 40px;
+  font-size: 13px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  cursor: pointer;
+  transition: all 0.2s;
+  display: block;
+  margin: 0 auto;
+}
+
+.show-all-btn:hover {
+  background: #000;
+  color: white;
+}
+
+.rankings-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.rankings-list li {
+  padding: 20px 0;
+  border-bottom: 1px solid #e5e5e5;
+  font-size: 16px;
+  color: #333;
+}
+
+.rankings-list li:last-child {
+  border-bottom: none;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .attorney-hero {
+    height: 400px;
+  }
+
+  .hero-content h1 {
+    font-size: 36px;
+  }
+
+  .attorney-meta {
+    font-size: 16px;
+  }
+
+  .contact-actions {
+    flex-direction: column;
+  }
+
+  .action-btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .detail-tabs {
+    top: 70px;
+  }
+
+  .tabs-nav {
+    overflow-x: scroll;
+  }
+
+  .tab-link {
+    padding: 16px 24px;
+    font-size: 13px;
+  }
+
+  .container {
+    padding: 0 24px;
+  }
+
+  .attorney-quote {
+    font-size: 20px;
+  }
+
+  .info-grid {
+    grid-template-columns: 1fr;
+    gap: 32px;
+  }
+
+  .hero-placeholder {
+    font-size: 80px;
+  }
+}

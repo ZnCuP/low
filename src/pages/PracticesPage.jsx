@@ -1,9 +1,12 @@
 import React, { useState } from 'react'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '../contexts/LanguageContext'
+import { t } from '../i18n/translations'
 import './PracticesPage.css'
 
 const practicesData = [
   {
+    key: 'businessFinance',
     title: 'Business + Finance',
     items: [
       'Antitrust',
@@ -32,6 +35,7 @@ const practicesData = [
     ]
   },
   {
+    key: 'litigation',
     title: 'Litigation',
     items: [
       'Antitrust',
@@ -50,6 +54,7 @@ const practicesData = [
     ]
   },
   {
+    key: 'intellectualProperty',
     title: 'Intellectual Property',
     items: [
       'Intellectual Property',
@@ -62,6 +67,7 @@ const practicesData = [
     ]
   },
   {
+    key: 'regulatory',
     title: 'Regulatory',
     items: [
       'Advertising',
@@ -87,6 +93,7 @@ const practicesData = [
 ]
 
 function PracticesPage() {
+  const { language } = useLanguage()
   const [expandedIndex, setExpandedIndex] = useState(null)
 
   const toggleAccordion = (index) => {
@@ -96,12 +103,12 @@ function PracticesPage() {
   return (
     <div className="practices-page">
       <div className="practices-header">
-        <h1>Our Capabilities</h1>
+        <h1>{t('practices.title', language)}</h1>
       </div>
 
       <div className="practices-container">
         <div className="practices-sidebar">
-          <h3>Practices</h3>
+          <h3>{t('practices.heading', language)}</h3>
         </div>
 
         <div className="practices-content">
@@ -112,7 +119,7 @@ function PracticesPage() {
                   className={`accordion-header ${expandedIndex === index ? 'active' : ''}`}
                   onClick={() => toggleAccordion(index)}
                 >
-                  <span>{practice.title}</span>
+                  <span>{t(`practices.${practice.key}`, language)}</span>
                   <svg 
                     className={`accordion-icon ${expandedIndex === index ? 'rotated' : ''}`}
                     width="24" 

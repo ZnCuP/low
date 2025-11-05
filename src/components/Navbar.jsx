@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
 import { useLanguage } from '../contexts/LanguageContext'
+import { t } from '../i18n/translations'
 import './Navbar.css'
 
 const megaMenuItems = {
@@ -33,6 +34,19 @@ function Navbar() {
     }
     window.addEventListener('scroll', handleScroll)
     return () => window.removeEventListener('scroll', handleScroll)
+  }, [])
+
+  // ESC键关闭菜单
+  useEffect(() => {
+    const handleEscape = (e) => {
+      if (e.key === 'Escape') {
+        setMenuOpen(false)
+        setSearchOpen(false)
+        setSignupOpen(false)
+      }
+    }
+    window.addEventListener('keydown', handleEscape)
+    return () => window.removeEventListener('keydown', handleEscape)
   }, [])
 
   return (
@@ -80,7 +94,7 @@ function Navbar() {
                 className="menu-btn"
                 onClick={() => setMenuOpen(!menuOpen)}
               >
-                MENU
+                {language === 'en' ? 'MENU' : '菜单'}
               </button>
             </div>
           </div>
@@ -118,13 +132,23 @@ function Navbar() {
       {/* Full Page Menu */}
       <AnimatePresence>
         {menuOpen && (
-          <motion.div 
-            className="fullpage-menu"
-            initial={{ x: '100%' }}
-            animate={{ x: 0 }}
-            exit={{ x: '100%' }}
-            transition={{ type: 'tween', duration: 0.4 }}
-          >
+          <>
+            {/* 背景遮罩 */}
+            <motion.div
+              className="menu-backdrop"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setMenuOpen(false)}
+            />
+            
+            <motion.div 
+              className="fullpage-menu"
+              initial={{ x: '100%' }}
+              animate={{ x: 0 }}
+              exit={{ x: '100%' }}
+              transition={{ type: 'tween', duration: 0.4 }}
+            >
             <div className="menu-header">
               <Link to="/" onClick={() => setMenuOpen(false)}>
                 <svg width="180" height="40" viewBox="0 0 180 40" fill="currentColor">
@@ -141,17 +165,17 @@ function Navbar() {
             
             <div className="menu-content">
               <div className="menu-section">
-                <h3>Navigate</h3>
-                <Link to="/people" onClick={() => setMenuOpen(false)}>People</Link>
-                <Link to="/practices" onClick={() => setMenuOpen(false)}>Practices</Link>
-                <Link to="/" onClick={() => setMenuOpen(false)}>Resources</Link>
-                <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
-                <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
+                <h3>{t('menu.navigate', language)}</h3>
+                <Link to="/people" onClick={() => setMenuOpen(false)}>{t('menu.people', language)}</Link>
+                <Link to="/practices" onClick={() => setMenuOpen(false)}>{t('menu.practices', language)}</Link>
+                <Link to="/" onClick={() => setMenuOpen(false)}>{t('menu.resources', language)}</Link>
+                <Link to="/about" onClick={() => setMenuOpen(false)}>{t('menu.about', language)}</Link>
+                <Link to="/contact" onClick={() => setMenuOpen(false)}>{t('menu.contact', language)}</Link>
               </div>
               
               <div className="menu-section">
-                <h3>Connect</h3>
-                <a href="#">Subscribe to Updates</a>
+                <h3>{t('menu.connect', language)}</h3>
+                <a href="#">{t('menu.subscribe', language)}</a>
                 <a href="#">LinkedIn</a>
                 <a href="#">Twitter</a>
                 <a href="#">YouTube</a>
@@ -165,11 +189,12 @@ function Navbar() {
                     setSignupOpen(true)
                   }}
                 >
-                  SIGN UP
+                  {t('menu.signup', language)}
                 </button>
               </div>
             </div>
           </motion.div>
+          </>
         )}
       </AnimatePresence>
 

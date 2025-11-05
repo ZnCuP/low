@@ -9,6 +9,7 @@ import NewsPage from './pages/NewsPage'
 import EventsPage from './pages/EventsPage'
 import BlogsPage from './pages/BlogsPage'
 import PeoplePage from './pages/PeoplePage'
+import AttorneyDetailPage from './pages/AttorneyDetailPage'
 import PracticesPage from './pages/PracticesPage'
 import AboutPage from './pages/AboutPage'
 import ContactPage from './pages/ContactPage'
@@ -27,6 +28,7 @@ function AnimatedRoutes() {
         <Route path="/events" element={<EventsPage />} />
         <Route path="/blogs" element={<BlogsPage />} />
         <Route path="/people" element={<PeoplePage />} />
+        <Route path="/people/:id" element={<AttorneyDetailPage />} />
         <Route path="/practices" element={<PracticesPage />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<ContactPage />} />

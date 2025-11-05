@@ -1,7 +1,10 @@
 import React, { useState } from 'react'
+import { useLanguage } from '../contexts/LanguageContext'
+import { t } from '../i18n/translations'
 import PageHeader from '../components/PageHeader'
 
 function ContactPage() {
+  const { language } = useLanguage()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
@@ -12,7 +15,7 @@ function ContactPage() {
 
   const handleSubmit = (e) => {
     e.preventDefault()
-    alert('Thank you for your message. We will be in touch soon.')
+    alert(t('contact.thankYou', language))
     setFormData({ name: '', email: '', company: '', subject: '', message: '' })
   }
 
@@ -26,17 +29,16 @@ function ContactPage() {
   return (
     <div className="page">
       <PageHeader 
-        title="Contact Us" 
-        description="Get in touch with Morrison Foerster"
+        title={t('contact.title', language)}
+        description={t('contact.description', language)}
       />
       
       <div className="content-wrapper">
         <div className="container">
           <div className="contact-content" style={{ maxWidth: '800px', margin: '0 auto' }}>
-            <h2>Send Us a Message</h2>
+            <h2>{t('contact.heading', language)}</h2>
             <p style={{ marginBottom: '32px', color: '#666' }}>
-              Have a question or want to learn more about our services? 
-              Fill out the form below and we'll get back to you shortly.
+              {t('contact.intro', language)}
             </p>
             
             <form onSubmit={handleSubmit} style={{ 
@@ -51,7 +53,7 @@ function ContactPage() {
                   fontWeight: '600',
                   color: '#333'
                 }}>
-                  Name *
+                  {t('contact.name', language)} *
                 </label>
                 <input
                   type="text"
@@ -76,7 +78,7 @@ function ContactPage() {
                   fontWeight: '600',
                   color: '#333'
                 }}>
-                  Email *
+                  {t('contact.email', language)} *
                 </label>
                 <input
                   type="email"
@@ -101,7 +103,7 @@ function ContactPage() {
                   fontWeight: '600',
                   color: '#333'
                 }}>
-                  Company
+                  {t('contact.company', language)}
                 </label>
                 <input
                   type="text"
@@ -125,7 +127,7 @@ function ContactPage() {
                   fontWeight: '600',
                   color: '#333'
                 }}>
-                  Subject *
+                  {t('contact.subject', language)} *
                 </label>
                 <input
                   type="text"
@@ -150,7 +152,7 @@ function ContactPage() {
                   fontWeight: '600',
                   color: '#333'
                 }}>
-                  Message *
+                  {t('contact.message', language)} *
                 </label>
                 <textarea
                   name="message"
@@ -186,7 +188,7 @@ function ContactPage() {
                 onMouseOver={(e) => e.target.style.background = '#a00d25'}
                 onMouseOut={(e) => e.target.style.background = '#c8102e'}
               >
-                Send Message
+                {t('contact.send', language)}
               </button>
             </form>
             
@@ -196,10 +198,11 @@ function ContactPage() {
               background: '#f8f8f8',
               borderRadius: '8px'
             }}>
-              <h3 style={{ color: '#c8102e', marginBottom: '16px' }}>Office Locations</h3>
+              <h3 style={{ color: '#c8102e', marginBottom: '16px' }}>
+                {t('contact.offices', language)}
+              </h3>
               <p style={{ color: '#666' }}>
-                Morrison Foerster has offices in major cities around the world. 
-                Visit our website to find an office near you.
+                {t('contact.officesText', language)}
               </p>
             </div>
           </div>
