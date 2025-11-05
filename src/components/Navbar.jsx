@@ -1,16 +1,26 @@
 import { useState, useEffect } from 'react'
 import { Link } from 'react-router-dom'
 import { motion, AnimatePresence } from 'framer-motion'
+import { useLanguage } from '../contexts/LanguageContext'
 import './Navbar.css'
 
 const megaMenuItems = {
-  firm: ['关于', '领导层', '多元化', '职业发展', '办公地点', '校友'],
-  practices: ['企业', '诉讼', '交易', '监管', '知识产权', '劳动雇佣'],
-  industries: ['技术', '生命科学', '金融服务', '能源', '房地产', '零售'],
-  people: ['律师', '专业人员', '专家团队'],
+  practices: [
+    'Corporate Finance',
+    'Litigation',
+    'Technology Transactions',
+    'Intellectual Property',
+    'Regulatory & Compliance',
+    'Labor & Employment',
+    'Real Estate',
+    'Bankruptcy & Restructuring',
+    'Privacy & Data Security',
+    'Environmental & Climate'
+  ],
 }
 
 function Navbar() {
+  const { language, toggleLanguage } = useLanguage()
   const [menuOpen, setMenuOpen] = useState(false)
   const [searchOpen, setSearchOpen] = useState(false)
   const [signupOpen, setSignupOpen] = useState(false)
@@ -43,100 +53,6 @@ function Navbar() {
 
           {/* Desktop Navigation */}
           <div className="nav-desktop">
-            <div className="nav-links">
-              <div 
-                className="nav-item"
-                onMouseEnter={() => setMegaMenu('firm')}
-                onMouseLeave={() => setMegaMenu(null)}
-              >
-                <span>公司</span>
-                <AnimatePresence>
-                  {megaMenu === 'firm' && (
-                    <motion.div 
-                      className="mega-menu"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                    >
-                      {megaMenuItems.firm.map(item => (
-                        <a key={item} href="#">{item}</a>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-              
-              <div 
-                className="nav-item"
-                onMouseEnter={() => setMegaMenu('practices')}
-                onMouseLeave={() => setMegaMenu(null)}
-              >
-                <span>业务领域</span>
-                <AnimatePresence>
-                  {megaMenu === 'practices' && (
-                    <motion.div 
-                      className="mega-menu"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                    >
-                      {megaMenuItems.practices.map(item => (
-                        <a key={item} href="#">{item}</a>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-              
-              <div 
-                className="nav-item"
-                onMouseEnter={() => setMegaMenu('industries')}
-                onMouseLeave={() => setMegaMenu(null)}
-              >
-                <span>行业</span>
-                <AnimatePresence>
-                  {megaMenu === 'industries' && (
-                    <motion.div 
-                      className="mega-menu"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                    >
-                      {megaMenuItems.industries.map(item => (
-                        <a key={item} href="#">{item}</a>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-              
-              <div 
-                className="nav-item"
-                onMouseEnter={() => setMegaMenu('people')}
-                onMouseLeave={() => setMegaMenu(null)}
-              >
-                <span>人员</span>
-                <AnimatePresence>
-                  {megaMenu === 'people' && (
-                    <motion.div 
-                      className="mega-menu"
-                      initial={{ opacity: 0, y: -10 }}
-                      animate={{ opacity: 1, y: 0 }}
-                      exit={{ opacity: 0, y: -10 }}
-                    >
-                      {megaMenuItems.people.map(item => (
-                        <a key={item} href="#">{item}</a>
-                      ))}
-                    </motion.div>
-                  )}
-                </AnimatePresence>
-              </div>
-              
-              <Link to="/" className="nav-item active">
-                <span>资源</span>
-              </Link>
-            </div>
-
             {/* Right side actions */}
             <div className="nav-actions">
               <button 
@@ -148,6 +64,16 @@ function Navbar() {
                   <circle cx="11" cy="11" r="8" strokeWidth="2"/>
                   <path d="M21 21l-4.35-4.35" strokeWidth="2"/>
                 </svg>
+              </button>
+              
+              <button 
+                className="lang-toggle"
+                onClick={toggleLanguage}
+                aria-label="切换语言"
+              >
+                <span style={{ opacity: language === 'en' ? 1 : 0.4 }}>EN</span>
+                <span style={{ margin: '0 4px' }}>/</span>
+                <span style={{ opacity: language === 'zh' ? 1 : 0.4 }}>中</span>
               </button>
               
               <button 
@@ -215,19 +141,17 @@ function Navbar() {
             
             <div className="menu-content">
               <div className="menu-section">
-                <h3>资源</h3>
-                <Link to="/resources" onClick={() => setMenuOpen(false)}>资源中心</Link>
-                <Link to="/insights" onClick={() => setMenuOpen(false)}>洞察</Link>
-                <Link to="/news" onClick={() => setMenuOpen(false)}>新闻</Link>
-                <Link to="/events" onClick={() => setMenuOpen(false)}>活动</Link>
-                <Link to="/blogs" onClick={() => setMenuOpen(false)}>博客</Link>
-                <Link to="/podcasts" onClick={() => setMenuOpen(false)}>播客</Link>
-                <Link to="/video-audio" onClick={() => setMenuOpen(false)}>视频音频</Link>
+                <h3>Navigate</h3>
+                <Link to="/people" onClick={() => setMenuOpen(false)}>People</Link>
+                <Link to="/practices" onClick={() => setMenuOpen(false)}>Practices</Link>
+                <Link to="/" onClick={() => setMenuOpen(false)}>Resources</Link>
+                <Link to="/about" onClick={() => setMenuOpen(false)}>About</Link>
+                <Link to="/contact" onClick={() => setMenuOpen(false)}>Contact</Link>
               </div>
               
               <div className="menu-section">
-                <h3>关注我们</h3>
-                <a href="#">订阅更新</a>
+                <h3>Connect</h3>
+                <a href="#">Subscribe to Updates</a>
                 <a href="#">LinkedIn</a>
                 <a href="#">Twitter</a>
                 <a href="#">YouTube</a>

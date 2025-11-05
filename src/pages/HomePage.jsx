@@ -34,9 +34,7 @@ const tabs = [
   { id: 'insights', label: 'Insights' },
   { id: 'news', label: 'News' },
   { id: 'events', label: 'Events' },
-  { id: 'blogs', label: 'Blogs' },
-  { id: 'podcasts', label: 'Podcasts' },
-  { id: 'video', label: 'Video + Audio' }
+  { id: 'blogs', label: 'Blogs' }
 ]
 
 const insightsData = [
